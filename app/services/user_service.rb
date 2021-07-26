@@ -29,7 +29,7 @@ class UserService
     User.create! name: 'abc', age: 123
     User.create! name: 'def', age: 456
     after_commit { puts 'Created 2 new users!' }
-    User.create! *args
+    User.create!(*args)
     after_commit { puts 'Created 2 new users!' }
   end
 end
