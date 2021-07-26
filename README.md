@@ -92,3 +92,6 @@ ActiveRecord::Base.transaction do
   after_commit { puts 'All is well.' }
 end
 ```
+
+> You can also see it in action in `UserService#successful` and
+> `UserService#failure`.
