@@ -74,3 +74,21 @@ ActiveRecord::Base.transaction do
   end
 end
 ```
+
+But with the `after_commit_everywhere` gem, we can wrap the extra processing in
+the outer transaction in an `after_commit` callbacks that will not execute when
+the transactions rollback.
+
+```ruby
+extend AfterCommitEverywhere
+
+ActiveRecord::Base.transaction do
+  User.create! name: 'abc', age: 123
+  User.create! name: 'def', age: 456
+  after_commit { puts 'Created 2 new users!' }
+  ActiveRecord::Base.transaction do
+    User.create!
+  end
+  after_commit { puts 'All is well.' }
+end
+```
