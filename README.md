@@ -6,8 +6,9 @@ The sample model `User` has `name` and `age` fields.  The model itself does not
 specify any constraints.  But we can make them mandatory in the database with:
 
 ```mysql
-alter table users modify name varchar(255) not null;
-alter table users modify age int(11) not null;
+ALTER TABLE users
+    MODIFY COLUMN name VARCHAR(255) NOT NULL,
+    MODIFY COLUMN age INT(11) NOT NULL;
 ```
 
 When using transactions, and especially nested transactions, database violations
