@@ -26,8 +26,6 @@ end
 This next example fails in the nested transaction, which rolls back everything,
 including the outer transaction.
 
-The following example will fail to even make it to the nested transaction.
-
 ```ruby
 ActiveRecord::Base.transaction do
   User.create! name: 'abc', age: 123
@@ -41,8 +39,6 @@ end
 > The attempt still _uses up_ two User IDs.
 
 This last example will succeed and adds three rows to the `users` table.
-
-The following example will fail to even make it to the nested transaction.
 
 ```ruby
 ActiveRecord::Base.transaction do
